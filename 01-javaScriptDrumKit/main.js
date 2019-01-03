@@ -1,7 +1,8 @@
 // window.addEventListener('keydown', function(e) {
 //   console.log('e',e);
 // })
-window.addEventListener("keydown", e => {
+
+  function playSound (e) {
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
   console.log("audio", audio);
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); // this is to trigger the class of 'key' for css effects
@@ -24,4 +25,6 @@ window.addEventListener("keydown", e => {
     this.classList.remove("playing"); //this refers to key bc of event listener.
   }
   keys.forEach(key => key.addEventListener("transitionend", removeTransition));
-});
+};
+
+window.addEventListener("keydown", playSound);
