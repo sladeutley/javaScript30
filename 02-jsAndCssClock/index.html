@@ -69,7 +69,9 @@
 
     <script>
       function setDate() {
-        console.log('hi');
+        const now = new Date();
+        const seconds = now.getSeconds();
+        console.log('seconds',seconds);
       }
       setInterval(setDate, 1000) // runs function setDate every 1000ms or 1 sec
     </script>
