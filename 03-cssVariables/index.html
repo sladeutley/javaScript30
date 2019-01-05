@@ -18,7 +18,7 @@
         value="10"
         data-sizing="px"
       />
-
+      <!-- above, 'data-sizing' is a data attribute, *which you can always create by putting 'data-something', and in this example we need bc we want its value to be px. *It will take evertying that has a 'data-' and make a nice object for you -->
       <label for="blur">Blur:</label>
       <input
         id="blur"
@@ -77,17 +77,22 @@
     </style>
 
     <script>
-       // 1. need to select all inputs so when they change, we can update the css variables which will change color on the screen 
-      const inputs = document.querySelectorAll('.controls input'); //this gives you a node list, which is like an array, but doesn't give you all the good methods of an array. *You can convert node list to array if want.
+      // 1. need to select all inputs so when they change, we can update the css variables which will change color on the screen
+      const inputs = document.querySelectorAll(".controls input"); //this gives you a node list, which is like an array, but doesn't give you all the good methods of an array. *You can convert node list to array if want.
 
       // 2. create function to handle update by listening for change event from inputs.
-      function handleUpdate () {
-        console.log('this.value',this.value);
+      function handleUpdate() {
+        console.log("this.value", this.value);
+        const suffix = this.dataset.sizing || ''; //refers to ('data-sizing' attribute we declared in html, so that it is in pixels, OR nothing if the color --> that's why we have the ||)
+
+        //3 Take the name of html element user selects, and applies the new value + the suffix variable we delared so we can have the px.
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
       }
 
-      inputs.forEach(input => input.addEventListener('change', handleUpdate));
-      inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
-
+      inputs.forEach(input => input.addEventListener("change", handleUpdate));
+      inputs.forEach(input =>
+        input.addEventListener("mousemove", handleUpdate)
+      );
     </script>
   </body>
 </html>
