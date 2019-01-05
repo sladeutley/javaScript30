@@ -77,8 +77,17 @@
     </style>
 
     <script>
-       // need to select all inputs so when they change, we can update the css variables which will change color on the screen 
+       // 1. need to select all inputs so when they change, we can update the css variables which will change color on the screen 
       const inputs = document.querySelectorAll('.controls input'); //this gives you a node list, which is like an array, but doesn't give you all the good methods of an array. *You can convert node list to array if want.
+
+      // 2. create function to handle update by listening for change event from inputs.
+      function handleUpdate () {
+        console.log('this.value',this.value);
+      }
+
+      inputs.forEach(input => input.addEventListener('change', handleUpdate));
+      inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
     </script>
   </body>
 </html>
