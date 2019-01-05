@@ -37,7 +37,7 @@
     <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500" />
 
     <style>
-      /* put variable on root (that's like the highest level) --> we can then use on other css variables we declare (do that in css by using '--' */
+      /* put variable on root (that's like the highest level) --> we can then use on other css variables we declare (do that in css by using '--') and to use that var, do 'var(--example) */
       :root {
         --base: #ffc600;
         --spacing: 10px;
@@ -46,6 +46,12 @@
 
       img {
         padding: var(--spacing);
+        background: var(--base);
+        filter: blur(var(--blur));
+      }
+
+      .hl {
+        color: var(--base);
       }
 
       /*
